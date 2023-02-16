@@ -10,9 +10,9 @@ module.exports = {
     connection: {
       host: "127.0.0.1",
       port: 5432,
-      user: "myuser",
-      password: "mypassword",
-      database: "mydb",
+      user: "postgres",
+      password: "root",
+      database: "postgres",
     },
     migrations: {
       directory: "./data/migrations",

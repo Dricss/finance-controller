@@ -6,7 +6,6 @@ import dayjs from "dayjs";
 import "./ModalRegister.css";
 
 const ModalRegister = (props) => {
-  console.log(props);
   const [categorySelect] = useState([
     "Necessidades Básicas",
     "Liberdade Financeira",
@@ -15,25 +14,23 @@ const ModalRegister = (props) => {
     "Doações",
   ]);
 
-  const [expenseName, setExpenseName] = useState(props.expenseName);
-  const [valor, setValor] = useState(props.valor);
-  const [date, setDate] = useState(props.monthReference);
-  const [category, setCategory] = useState(props.category);
+  const [expenseName, setExpenseName] = useState();
+  const [valor, setValor] = useState();
+  const [date, setDate] = useState();
+  const [category, setCategory] = useState();
 
   const updateExpend = async () => {
-    console.log(props);
     if (date === undefined) {
       setDate(props.monthReference);
     }
     try {
-      handleOk(async () => {
-        await inAxios.put(`/finances/${props.id}`, {
-          expenseName: expenseName,
-          valor: valor,
-          monthReference: date,
-          category: category,
-        });
+      await inAxios.put(`/finances/${props.id}`, {
+        expenseName: expenseName,
+        valor: valor,
+        monthReference: date,
+        category: category,
       });
+      handleOk();
     } catch (error) {
       alert(`Erro na alteração de dados: ${error}`);
     }
@@ -45,13 +42,12 @@ const ModalRegister = (props) => {
   const showModal = () => {
     setOpen(true);
   };
-  const handleOk = async (cb) => {
+  const handleOk = () => {
     setLoading(true);
-    await cb();
-    // setTimeout(() => {
-    setLoading(false);
-    setOpen(false);
-    // }, 3000);
+    setTimeout(() => {
+      setLoading(false);
+      setOpen(false);
+    }, 3000);
   };
   const handleCancel = () => {
     setOpen(false);

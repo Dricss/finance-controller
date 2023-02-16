@@ -24,7 +24,7 @@ const RegisterForm = () => {
       monthReference: date,
       category: category,
     };
-    console.log(fields);
+
     try {
       const response = await inAxios.post("/finances/register", fields);
       console.log(response);
@@ -38,26 +38,26 @@ const RegisterForm = () => {
     <Row>
       <Col span={12} offset={6}>
         <Form className="form" onFinish={saveExpense}>
-          <Form.Item name={"expenseName"} label="Name">
+          <Form.Item label="Name">
             <Input onChange={(e) => setName(e.target.value)} />
           </Form.Item>
-          <Form.Item name={"valor"} label="Valor">
+          <Form.Item label="Valor">
             <Input
               type="number"
               step={0.01}
               onChange={(e) => setValue(e.target.value)}
             />
           </Form.Item>
-          <Form.Item name={"monthReference"} label="Data">
+          <Form.Item label="Data">
             <DatePicker
               className="datePicker"
               format={"DD/MM/YYYY"}
               onChange={(date, dateString) =>
-                setDate(dayjs(dateString, "MM/DD/YYYY"))
+                setDate(dayjs(date, "MM/DD/YYYY"))
               }
             />
           </Form.Item>
-          <Form.Item name={"category"} label="Categoria">
+          <Form.Item label="Categoria">
             <Select
               placeholder={"Selecione..."}
               id="categorySelect"

@@ -79,4 +79,4 @@ Este é mais simples, basta acessarmos o diretório através do seu terminal, e 
 
 ## Autores
 
-- [@dricss](https://www.github.com/octokatherine)
+- [@dricss](https://github.com/Dricss)

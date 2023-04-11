@@ -62,10 +62,11 @@ const Dashboard = () => {
           <PieTest rangePicker={selectedDate} getTotal={getTotal} />
           <h4>
             Total:{" "}
-            {totalValue.toLocaleString("pt-BR", {
-              style: "currency",
-              currency: "BRL",
-            })}
+            {totalValue &&
+              totalValue.toLocaleString("pr-br", {
+                style: "currency",
+                currency: "BRL",
+              })}
           </h4>
         </Content>
       </Layout>
